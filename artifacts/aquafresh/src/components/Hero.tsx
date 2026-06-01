@@ -80,20 +80,36 @@ export function Hero() {
           transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
           className="relative h-[600px] w-full flex items-center justify-center"
         >
-          {/* Mock bottle representation - in a real app this would be a 3D model */}
-          <div className="relative w-48 h-[500px] rounded-[100px] border border-white/40 dark:border-white/10 glass-card flex items-center justify-center overflow-hidden shadow-2xl before:absolute before:inset-0 before:bg-gradient-to-tr before:from-white/10 before:to-transparent">
+          {/* Premium bottle visual */}
+          <div className="relative w-48 h-[500px] rounded-[100px] border border-primary/30 flex items-center justify-center overflow-hidden shadow-2xl"
+               style={{ background: "linear-gradient(145deg, hsl(195 85% 95%), hsl(200 60% 88%), hsl(195 85% 92%))" }}>
+            {/* Water fill animation */}
             <motion.div 
-              className="absolute bottom-0 w-full bg-primary/20 backdrop-blur-sm"
+              className="absolute bottom-0 w-full"
+              style={{ background: "linear-gradient(to top, hsl(195 85% 65% / 0.5), hsl(195 85% 75% / 0.2))" }}
               initial={{ height: "0%" }}
-              animate={{ height: "80%" }}
-              transition={{ duration: 2, delay: 1, ease: "easeInOut" }}
+              animate={{ height: "78%" }}
+              transition={{ duration: 2.5, delay: 1, ease: "easeInOut" }}
             />
-            <div className="absolute top-10 w-32 h-16 border border-white/30 rounded-lg flex items-center justify-center font-serif text-xs tracking-[0.2em] font-bold text-foreground">
-              AQUAFRESH
+            {/* Wave overlay on water fill */}
+            <motion.div
+              className="absolute w-full h-8"
+              animate={{ y: [-4, 4, -4] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              style={{ bottom: "78%", background: "hsl(195 85% 70% / 0.3)", borderRadius: "50% 50% 0 0 / 100% 100% 0 0" }}
+            />
+            {/* Label */}
+            <div className="absolute top-16 w-32 py-3 border border-primary/40 rounded-xl flex flex-col items-center justify-center font-serif text-[10px] tracking-[0.25em] font-bold text-primary/80 bg-white/60 backdrop-blur-sm z-10">
+              <div className="text-base font-bold tracking-widest">AQUA</div>
+              <div className="text-[8px] tracking-[0.4em]">FRESH</div>
+              <div className="mt-1 text-[7px] tracking-wider text-primary/60">PREMIUM WATER</div>
             </div>
             {/* Reflections */}
-            <div className="absolute left-4 top-20 bottom-20 w-2 bg-gradient-to-b from-white/0 via-white/50 to-white/0 blur-[2px] rounded-full" />
-            <div className="absolute right-8 top-30 bottom-30 w-1 bg-gradient-to-b from-white/0 via-white/30 to-white/0 blur-[1px] rounded-full" />
+            <div className="absolute left-5 top-24 bottom-24 w-2 bg-gradient-to-b from-transparent via-white/60 to-transparent blur-[2px] rounded-full z-10" />
+            <div className="absolute right-8 top-32 bottom-32 w-1 bg-gradient-to-b from-transparent via-white/40 to-transparent blur-[1px] rounded-full z-10" />
+            {/* Cap */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-10 rounded-b-3xl border border-primary/30 z-10"
+                 style={{ background: "linear-gradient(to bottom, hsl(195 50% 80%), hsl(195 50% 70%))" }} />
           </div>
         </motion.div>
       </div>

@@ -32,15 +32,16 @@ export function Scrollytelling() {
   const scene7Opacity = useTransform(scrollYProgress, [0.9, 0.95, 1], [0, 1, 1]);
 
   return (
-    <div ref={containerRef} className="h-[700vh] relative bg-background" id="source">
+    <div ref={containerRef} style={{ position: "relative" }} className="h-[700vh] bg-background" id="source">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
         {/* Background elements */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
 
         {/* Scene 1 */}
         <motion.div style={{ opacity: scene1Opacity }} className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-          <motion.div style={{ y: scene1Y }} className="w-32 h-64 border border-primary/30 rounded-[60px] glass flex items-center justify-center mb-8 relative overflow-hidden">
-             <div className="absolute bottom-0 w-full h-[60%] bg-primary/20" />
+          <motion.div style={{ y: scene1Y, background: "linear-gradient(145deg, hsl(195 85% 94%), hsl(200 60% 86%))" }} className="w-32 h-64 border border-primary/40 rounded-[60px] flex items-center justify-center mb-8 relative overflow-hidden shadow-xl">
+             <div className="absolute bottom-0 w-full h-[60%]" style={{ background: "linear-gradient(to top, hsl(195 85% 65% / 0.4), hsl(195 85% 75% / 0.15))" }} />
+             <div className="absolute top-4 w-20 h-4 rounded-b-xl" style={{ background: "hsl(195 50% 75%)" }} />
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-serif mb-4">Born From Pure Sources</h2>
           <p className="text-muted-foreground max-w-md text-lg">Untouched mountain springs provide the foundation for perfect hydration.</p>

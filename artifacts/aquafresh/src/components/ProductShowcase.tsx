@@ -46,8 +46,10 @@ export function ProductShowcase() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -10 }}
-              className={`relative rounded-3xl p-8 glass flex flex-col items-center text-center transition-all duration-300 ${
-                product.featured ? 'border-primary/50 shadow-[0_0_30px_hsl(var(--primary)/0.1)] scale-105 z-10' : 'border-border'
+              className={`relative rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-300 border ${
+                product.featured
+                  ? 'bg-white/70 dark:bg-white/5 border-primary/40 shadow-[0_0_40px_hsl(var(--primary)/0.15)] scale-105 z-10 backdrop-blur-xl'
+                  : 'bg-white/50 dark:bg-white/5 border-border backdrop-blur-md shadow-lg'
               }`}
             >
               {product.featured && (

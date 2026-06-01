@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Preloader } from "@/components/Preloader";
 import { Cursor } from "@/components/Cursor";
 import { Navbar } from "@/components/Navbar";
@@ -13,10 +13,11 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const handleComplete = useCallback(() => setLoading(false), []);
 
   return (
     <div className="relative min-h-screen bg-background overflow-hidden selection:bg-primary/30 selection:text-primary">
-      {loading && <Preloader onComplete={() => setLoading(false)} />}
+      {loading && <Preloader onComplete={handleComplete} />}
       <Cursor />
       
       {!loading && (

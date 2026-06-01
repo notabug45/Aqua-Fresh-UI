@@ -11,7 +11,7 @@ export function PurityExperience() {
   const clipPath = useTransform(scrollYProgress, [0.2, 0.8], ["circle(5% at 50% 50%)", "circle(100% at 50% 50%)"]);
 
   return (
-    <section ref={containerRef} className="h-[200vh] relative" id="purity">
+    <section ref={containerRef} style={{ position: "relative" }} className="h-[200vh]" id="purity">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden bg-background">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-0">
           <h2 className="text-3xl md:text-5xl font-serif text-muted-foreground/30">Scroll to reveal purity</h2>

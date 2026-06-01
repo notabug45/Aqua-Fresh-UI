@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import { Avatar, AvatarFallback } from "./ui/avatar";
 
 const testimonials = [
   {
@@ -56,9 +55,9 @@ export function Testimonials() {
                 "{t.content}"
               </p>
               <div className="flex items-center gap-4">
-                <Avatar className="w-12 h-12 border-2 border-primary/20">
-                  <AvatarFallback className="bg-primary/10 text-primary font-serif">{t.initials}</AvatarFallback>
-                </Avatar>
+                <div className="w-12 h-12 rounded-full border-2 border-primary/20 bg-primary/10 flex items-center justify-center text-primary font-serif font-semibold text-sm shrink-0">
+                  {t.initials}
+                </div>
                 <div>
                   <h4 className="font-semibold">{t.name}</h4>
                   <p className="text-sm text-muted-foreground">{t.role}</p>
