@@ -1,0 +1,441 @@
+# AquaFresh Waters – Premium Luxury Frontend UI/UX Prompt
+
+Design and build an ultra-premium, award-winning frontend experience for a drinking water brand called **AquaFresh Waters**.
+
+The website should feel like a blend of:
+
+* Apple Product Launch Website
+* Tesla Website
+* Liquid Death Premium Branding
+* Bisleri Vedica Luxury Experience
+* Nike Storytelling Website
+* Awwwards-winning modern web experiences
+
+The goal is to make visitors instantly feel:
+
+**Pure • Premium • Luxury • Trustworthy • Refreshing • Modern**
+
+---
+
+# Design Language
+
+Create a highly immersive, cinematic experience.
+
+Color Palette:
+
+* Crystal White
+* Aqua Blue
+* Deep Ocean Blue
+* Ice Blue
+* Silver Accents
+
+Visual Style:
+
+* Glassmorphism
+* Neumorphism
+* Luxury Product Showcase
+* Smooth Gradients
+* Premium Typography
+* Floating Elements
+* Soft Reflections
+* Liquid-Inspired Animations
+
+The entire website should feel fluid, elegant and expensive.
+
+---
+
+# Hero Section
+
+Full-screen immersive hero.
+
+Background:
+
+Ultra-HD cinematic video showing:
+
+* Mountain springs
+* Water droplets
+* Crystal-clear rivers
+* Slow-motion water splash effects
+
+Centerpiece:
+
+A large realistic 3D AquaFresh bottle.
+
+Bottle slowly rotates.
+
+Mouse movement creates subtle parallax.
+
+Bottle reflects surrounding environment.
+
+Headline:
+
+"Pure Water. Perfected By Nature."
+
+Subheadline:
+
+"Experience premium hydration delivered fresh to your doorstep."
+
+CTA Buttons:
+
+* Order Now
+* Explore Our Process
+
+Buttons should have:
+
+* Glow effect
+* Water ripple hover animation
+* Magnetic hover interaction
+
+---
+
+# 3D Scrollytelling Experience
+
+Create a premium Apple-style product storytelling section.
+
+As user scrolls:
+
+---
+
+Scene 1
+
+The bottle emerges from a mountain spring.
+
+Water particles flow around the bottle.
+
+Text appears:
+
+"Born From Pure Sources"
+
+---
+
+Scene 2
+
+Camera zooms into bottle.
+
+Bottle cap slowly opens.
+
+Cap floats upward.
+
+A burst of crystal water splashes into the screen.
+
+Water simulation should feel realistic.
+
+---
+
+Scene 3
+
+As water splashes:
+
+Nutrient particles appear.
+
+Floating 3D molecules.
+
+Animated labels:
+
+* Calcium
+* Magnesium
+* Potassium
+* Essential Minerals
+
+Particles orbit around the bottle.
+
+Text:
+
+"Naturally Enriched With Essential Minerals"
+
+---
+
+Scene 4
+
+Water flows through multiple filtration chambers.
+
+Animated visualization of:
+
+* Sediment Filtration
+* Carbon Filtration
+* RO Purification
+* UV Sterilization
+* Ozonization
+
+Each stage should have cinematic transitions.
+
+---
+
+Scene 5
+
+Bottle fills with purified water.
+
+Water level rises smoothly.
+
+Bottle becomes crystal clear.
+
+Text:
+
+"Every Drop Tested For Purity"
+
+---
+
+Scene 6
+
+Bottle seals automatically.
+
+Premium metallic cap closes.
+
+A quality seal appears.
+
+Text:
+
+"BIS Certified. ISO Certified. Trusted By Thousands."
+
+---
+
+Scene 7
+
+Multiple bottles appear.
+
+Camera flies through product lineup.
+
+Products elegantly reveal themselves.
+
+---
+
+# Premium Product Showcase
+
+Create floating luxury product cards.
+
+Cards should have:
+
+* Glassmorphism effect
+* Hover lift animation
+* Reflection effect
+* Dynamic shadows
+* Product rotation on hover
+
+Hover Interaction:
+
+When hovering a bottle:
+
+* Bottle slightly rotates
+* Water inside animates
+* Reflection moves
+* Card elevates smoothly
+
+---
+
+# Water Purity Experience
+
+Interactive section.
+
+When user scrolls:
+
+Water droplet expands.
+
+Droplet transforms into an entire ecosystem.
+
+Reveal:
+
+* Purity
+* Safety
+* Testing
+* Certification
+
+Use liquid morphing transitions.
+
+---
+
+# Why Choose AquaFresh
+
+Create premium feature cards.
+
+Icons should be animated.
+
+Hover Effects:
+
+* Glow
+* Scale
+* Floating motion
+* Particle effects
+
+Features:
+
+* RO + UV + Ozonization
+* Multi-Stage Purification
+* Doorstep Delivery
+* Eco-Friendly Packaging
+* Quality Assurance
+* Affordable Pricing
+
+---
+
+# Luxury Statistics Section
+
+Animated counters.
+
+Numbers should increase smoothly.
+
+Examples:
+
+10 Million+
+
+Bottles Delivered
+
+5000+
+
+Corporate Clients
+
+99.99%
+
+Purity Level
+
+50+
+
+Cities Served
+
+Background:
+
+Floating water particles.
+
+---
+
+# Interactive Delivery Map
+
+3D map experience.
+
+Service locations illuminate when hovered.
+
+Animated delivery routes.
+
+Glowing markers.
+
+---
+
+# Testimonials
+
+Premium floating glass cards.
+
+Cards move slightly with cursor.
+
+Customer images appear in circular glass frames.
+
+Ratings animate on scroll.
+
+---
+
+# Scroll Effects
+
+Use:
+
+* GSAP ScrollTrigger
+* Three.js
+* React Three Fiber
+* Framer Motion
+
+Effects:
+
+* Smooth Scroll
+* Parallax Layers
+* Depth Effects
+* Scale Transitions
+* Fade Transitions
+* Water Ripple Effects
+* Liquid Morphing
+* Camera Flythrough Animations
+
+No abrupt transitions.
+
+Everything should feel cinematic.
+
+---
+
+# Cursor Effects
+
+Custom water droplet cursor.
+
+Cursor leaves tiny ripple effects.
+
+Hovering buttons creates water waves.
+
+---
+
+# Micro Interactions
+
+Every element should feel alive.
+
+Examples:
+
+Buttons:
+
+* Ripple Animation
+* Liquid Fill Effect
+
+Cards:
+
+* Float Animation
+* Tilt Effect
+
+Images:
+
+* Zoom on Hover
+
+Icons:
+
+* Bounce Animation
+
+Links:
+
+* Underline Flow Animation
+
+---
+
+# Loading Experience
+
+Luxury preloader.
+
+Water droplet falls from top.
+
+Splash animation.
+
+Progress bar fills with flowing water.
+
+Then reveals website.
+
+---
+
+# Dark Mode
+
+Create a premium dark mode.
+
+Colors:
+
+* Deep Navy
+* Aqua Glow
+* Glass Blue
+
+Water effects should remain visible.
+
+---
+
+# Mobile Experience
+
+Do not remove premium effects.
+
+Instead create optimized versions.
+
+Use:
+
+* Touch Parallax
+* Mobile Scrollytelling
+* Reduced Particle Count
+* Optimized Three.js Rendering
+
+Must maintain luxury feel.
+
+---
+
+# Final Goal
+
+The website should not look like a normal water company website.
+
+It should feel like a luxury product launch experience where users are emotionally convinced that AquaFresh is a premium water brand before they even see the pricing.
+
+The experience should be memorable, immersive, cinematic, and worthy of an Awwwards Website of the Day nomination.

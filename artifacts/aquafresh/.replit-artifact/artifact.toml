@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "AquaFresh Waters"
+version = "1.0.0"
+id = "artifacts/aquafresh"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18938
+
+[services.development]
+run = "pnpm --filter @workspace/aquafresh run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aquafresh", "run", "build" ]
+publicDir = "artifacts/aquafresh/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18938"
+BASE_PATH = "/"
