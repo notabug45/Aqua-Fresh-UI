@@ -1,26 +1,32 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
-import { WaterBottleSVG } from "./WaterBottleSVG";
+import bottleImg from "@assets/Aqua_Bottle_1780316390467.jpeg";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-[#030d1a] via-[#051525] to-[#0a1f35]">
-      {/* Background glows */}
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-[#020b18] via-[#041222] to-[#071e35]">
+      {/* Background atmosphere */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.25, 0.45, 0.25] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 right-0 w-[700px] h-[700px] rounded-full blur-[140px]"
-          style={{ background: "radial-gradient(circle, #0ea5e920 0%, transparent 70%)" }}
+          animate={{ scale: [1, 1.18, 1], opacity: [0.3, 0.55, 0.3] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 right-0 w-[900px] h-[900px] rounded-full"
+          style={{
+            background: "radial-gradient(circle at 70% 30%, #0ea5e930 0%, #06b6d415 40%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
         />
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, #06b6d418 0%, transparent 70%)" }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.3, 0.15] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+          className="absolute bottom-0 left-0 w-[700px] h-[700px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, #38bdf815 0%, transparent 70%)",
+            filter: "blur(100px)",
+          }}
         />
-        {/* Subtle grid */}
+        {/* Grid overlay */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -31,13 +37,13 @@ export function Hero() {
         />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-screen py-20">
-        {/* Text */}
+      <div className="container mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-screen py-24">
+        {/* ── Left: copy ───────────────────────────────────────── */}
         <div className="max-w-2xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 0.9, delay: 0.2 }}
             className="flex items-center gap-3 mb-8"
           >
             <div className="h-px w-8 bg-sky-400 rounded-full" />
@@ -47,10 +53,10 @@ export function Hero() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.08] mb-6 text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.06] mb-6 text-white"
           >
             Pure Water.<br />
             <span
@@ -66,17 +72,17 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
             className="text-base md:text-lg text-white/55 mb-10 max-w-lg leading-relaxed font-light"
           >
-            Experience premium hydration delivered fresh to your doorstep. Sourced from pristine
-            mountain springs, enriched with natural minerals.
+            Experience premium hydration delivered fresh to your doorstep. Sourced from
+            pristine mountain springs, enriched with natural minerals.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4"
@@ -94,7 +100,7 @@ export function Hero() {
               variant="outline"
               className="h-14 px-8 rounded-full text-base font-semibold transition-all duration-300 hover:scale-105"
               style={{
-                border: "1px solid rgba(56,189,248,0.25)",
+                border: "1px solid rgba(56,189,248,0.22)",
                 color: "#7dd3fc",
                 background: "rgba(56,189,248,0.05)",
               }}
@@ -103,9 +109,9 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          {/* Stats row */}
+          {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.1 }}
             className="flex gap-10 mt-14 pt-10 border-t border-white/[0.07]"
@@ -123,49 +129,47 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Bottle — SVG with cinematic glow on dark bg */}
+        {/* ── Right: product photo ──────────────────────────────── */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-          className="relative h-[600px] w-full flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, delay: 0.4, ease: "easeOut" }}
+          className="relative flex items-center justify-center h-[580px] lg:h-full"
         >
-          {/* Multi-layer ambient glow */}
+          {/* Halo glow */}
           <motion.div
-            animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.75, 0.5] }}
+            animate={{ opacity: [0.45, 0.7, 0.45], scale: [1, 1.08, 1] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute w-72 h-72 rounded-full pointer-events-none"
+            className="absolute rounded-full pointer-events-none"
             style={{
-              background: "radial-gradient(circle, #0ea5e940 0%, #06b6d420 40%, transparent 70%)",
-              filter: "blur(60px)",
-            }}
-          />
-          <motion.div
-            animate={{ scale: [1.1, 1, 1.1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            className="absolute w-48 h-48 rounded-full pointer-events-none"
-            style={{
-              background: "radial-gradient(circle, #38bdf855 0%, transparent 70%)",
-              filter: "blur(40px)",
+              width: 320,
+              height: 320,
+              background: "radial-gradient(circle, #0ea5e935 0%, #06b6d418 50%, transparent 75%)",
+              filter: "blur(50px)",
             }}
           />
 
-          {/* Floating bottle */}
+          {/* Product image — floats up/down */}
           <motion.div
-            animate={{ y: [0, -14, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, -16, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="relative z-10"
+            style={{ filter: "drop-shadow(0 30px 60px #0ea5e940)" }}
           >
-            <WaterBottleSVG size="lg" animated waterLevel={75} />
+            <img
+              src={bottleImg}
+              alt="AquaFresh Premium Water Bottle"
+              className="h-[520px] w-auto object-contain"
+              style={{ maxHeight: "80vh" }}
+            />
           </motion.div>
 
-          {/* Reflection below bottle */}
-          <motion.div
-            animate={{ opacity: [0.15, 0.25, 0.15] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-12 w-24 h-4 rounded-full pointer-events-none"
+          {/* Floor reflection */}
+          <div
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-6 rounded-full pointer-events-none"
             style={{
-              background: "radial-gradient(ellipse, #38bdf860 0%, transparent 70%)",
-              filter: "blur(8px)",
+              background: "radial-gradient(ellipse, #38bdf840 0%, transparent 70%)",
+              filter: "blur(10px)",
             }}
           />
         </motion.div>
@@ -175,7 +179,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+        transition={{ delay: 2.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <motion.div

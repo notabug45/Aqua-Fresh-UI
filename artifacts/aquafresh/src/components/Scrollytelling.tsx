@@ -6,7 +6,7 @@ import {
   useMotionValueEvent,
   MotionValue,
 } from "framer-motion";
-import { WaterBottle3D } from "./WaterBottle3D";
+import bottleImg from "@assets/Aqua_Bottle_1780316390467.jpeg";
 
 // ── Scene data ────────────────────────────────────────────────────────────
 const scenes = [
@@ -38,7 +38,13 @@ const scenes = [
     accent: "#0ea5e9",
     extras: {
       type: "stages",
-      items: ["Sediment Filtration", "Carbon Filtration", "Reverse Osmosis", "UV Sterilization", "Ozonization"],
+      items: [
+        "Sediment Filtration",
+        "Carbon Filtration",
+        "Reverse Osmosis",
+        "UV Sterilization",
+        "Ozonization",
+      ],
     },
   },
   {
@@ -53,7 +59,7 @@ const scenes = [
     headline: "Certified\nExcellence",
     sub: "BIS Certified. ISO 9001:2015. Trusted by thousands of families and 5,000+ corporate clients across 50 cities.",
     accent: "#38bdf8",
-    extras: { type: "badges", items: ["BIS Certified", "ISO 9001", "FSSAI Approved"] },
+    extras: { type: "badges", items: ["BIS Certified", "ISO 9001:2015", "FSSAI Approved"] },
   },
   {
     label: "YOURS",
@@ -65,10 +71,10 @@ const scenes = [
 ];
 
 const N = scenes.length;
-// Cross-fade half-window: 40% of a scene's scroll-range on each side
-const DELTA = 0.5 / N * 0.38;
+// Half-window for crossfade at each scene boundary
+const DELTA = (1 / N) * 0.38;
 
-// ── Single scene text layer ──────────────────────────────────────────────
+// ── Scene text panel (one per scene, stacked + crossfaded) ────────────────
 function SceneText({
   scene,
   idx,
@@ -80,32 +86,24 @@ function SceneText({
 }) {
   const boundary = idx / N;
   const nextBoundary = (idx + 1) / N;
-
-  // Fade in at entry boundary, fade out at exit boundary
-  // Clamp so scene 0 starts visible and scene N-1 ends visible
-  const fadeInStart = Math.max(0, boundary - DELTA);
-  const fadeInEnd = Math.min(1, boundary + DELTA);
+  const fadeInStart  = Math.max(0, boundary - DELTA);
+  const fadeInEnd    = Math.min(1, boundary + DELTA);
   const fadeOutStart = Math.max(0, nextBoundary - DELTA);
-  const fadeOutEnd = Math.min(1, nextBoundary + DELTA);
+  const fadeOutEnd   = Math.min(1, nextBoundary + DELTA);
 
   const opacity = useTransform(
     scrollYProgress,
     idx === 0
       ? [0, fadeOutStart, fadeOutEnd]
       : [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
-    idx === 0
-      ? [1, 1, 0]
-      : [0, 1, 1, 0]
+    idx === 0 ? [1, 1, 0] : [0, 1, 1, 0]
   );
-
   const y = useTransform(
     scrollYProgress,
     idx === 0
       ? [0, fadeOutStart, fadeOutEnd]
       : [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
-    idx === 0
-      ? [0, 0, -30]
-      : [40, 0, 0, -30]
+    idx === 0 ? [0, 0, -28] : [36, 0, 0, -28]
   );
 
   return (
@@ -115,10 +113,7 @@ function SceneText({
     >
       {/* Chapter label */}
       <div className="flex items-center gap-3 mb-6">
-        <div
-          className="h-px w-8 rounded-full"
-          style={{ background: scene.accent }}
-        />
+        <div className="h-px w-8 rounded-full" style={{ background: scene.accent }} />
         <span
           className="text-[11px] font-bold tracking-[0.5em] uppercase"
           style={{ color: scene.accent }}
@@ -128,16 +123,16 @@ function SceneText({
       </div>
 
       {/* Headline */}
-      <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.08] mb-6 text-white whitespace-pre-line">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif leading-[1.08] mb-6 text-white whitespace-pre-line">
         {scene.headline}
       </h2>
 
       {/* Sub-copy */}
-      <p className="text-base md:text-lg text-white/60 max-w-md font-light leading-relaxed mb-8">
+      <p className="text-sm md:text-base lg:text-lg text-white/55 max-w-md font-light leading-relaxed mb-8">
         {scene.sub}
       </p>
 
-      {/* Extras */}
+      {/* Minerals */}
       {scene.extras?.type === "minerals" && (
         <div className="flex flex-wrap gap-2">
           {scene.extras.items.map((item) => (
@@ -156,8 +151,9 @@ function SceneText({
         </div>
       )}
 
+      {/* Filtration stages */}
       {scene.extras?.type === "stages" && (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2.5">
           {scene.extras.items.map((item, i) => (
             <div key={item} className="flex items-center gap-3">
               <span
@@ -177,8 +173,9 @@ function SceneText({
         </div>
       )}
 
+      {/* Certification badges */}
       {scene.extras?.type === "badges" && (
-        <div className="flex gap-4">
+        <div className="flex gap-3 flex-wrap">
           {scene.extras.items.map((item) => (
             <div
               key={item}
@@ -190,7 +187,7 @@ function SceneText({
               }}
             >
               <div
-                className="w-2 h-2 rounded-full animate-pulse"
+                className="w-1.5 h-1.5 rounded-full animate-pulse"
                 style={{ background: scene.accent }}
               />
               {item}
@@ -202,7 +199,7 @@ function SceneText({
   );
 }
 
-// ── Progress dots (needs own component for hooks-at-top-level) ────────────
+// ── Progress dot (needs own component so hooks are at top level) ──────────
 function ProgressDot({
   idx,
   scrollYProgress,
@@ -210,34 +207,86 @@ function ProgressDot({
   idx: number;
   scrollYProgress: MotionValue<number>;
 }) {
-  const boundary = idx / N;
+  const boundary     = idx / N;
   const nextBoundary = (idx + 1) / N;
+  const fadeInStart  = Math.max(0, boundary - DELTA);
+  const fadeInEnd    = Math.min(1, boundary + DELTA);
+  const fadeOutStart = Math.max(0, nextBoundary - DELTA);
+  const fadeOutEnd   = Math.min(1, nextBoundary + DELTA);
+
   const opacity = useTransform(
     scrollYProgress,
-    [Math.max(0, boundary - DELTA), boundary + DELTA, nextBoundary - DELTA, Math.min(1, nextBoundary + DELTA)],
+    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
     [0.25, 1, 1, 0.25]
   );
   const scaleX = useTransform(
     scrollYProgress,
-    [Math.max(0, boundary - DELTA), boundary + DELTA, nextBoundary - DELTA, Math.min(1, nextBoundary + DELTA)],
+    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
     [0.4, 1, 1, 0.4]
   );
 
-  const accent = scenes[idx].accent;
   return (
-    <motion.div
-      style={{ opacity, scaleX }}
-      className="h-[3px] w-8 rounded-full origin-left"
-      title={scenes[idx].label}
-      data-accent={accent}
-    >
-      <div className="h-full w-full rounded-full" style={{ background: accent }} />
+    <motion.div style={{ opacity, scaleX }} className="h-[3px] w-8 rounded-full origin-left">
+      <div className="h-full w-full rounded-full" style={{ background: scenes[idx].accent }} />
     </motion.div>
   );
 }
 
-// ── Scroll-driven accent color for ambient blob ───────────────────────────
-const ACCENT_STOPS = scenes.map((s) => s.accent);
+// ── Bottle image with scroll-driven parallax ──────────────────────────────
+function BottleImage({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
+  // Bottle drifts up slightly and scales very gently as you scroll
+  const y     = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.04, 1.08]);
+
+  return (
+    <motion.div
+      style={{ y, scale }}
+      className="h-full w-full flex items-center justify-center"
+    >
+      {/* Glow halo behind bottle */}
+      <motion.div
+        animate={{ opacity: [0.5, 0.8, 0.5], scale: [1, 1.1, 1] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute rounded-full pointer-events-none"
+        style={{
+          width: 340,
+          height: 340,
+          background:
+            "radial-gradient(circle, #0ea5e938 0%, #06b6d420 45%, transparent 72%)",
+          filter: "blur(55px)",
+        }}
+      />
+
+      {/* Floating product image */}
+      <motion.div
+        animate={{ y: [0, -14, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        style={{ filter: "drop-shadow(0 40px 70px #0ea5e950)" }}
+        className="relative z-10"
+      >
+        <img
+          src={bottleImg}
+          alt="AquaFresh Premium Water Bottle"
+          className="h-[480px] md:h-[560px] w-auto object-contain select-none"
+          draggable={false}
+        />
+      </motion.div>
+
+      {/* Floor reflection */}
+      <motion.div
+        animate={{ opacity: [0.18, 0.32, 0.18] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-12 pointer-events-none"
+        style={{
+          width: 120,
+          height: 18,
+          background: "radial-gradient(ellipse, #38bdf860 0%, transparent 70%)",
+          filter: "blur(10px)",
+        }}
+      />
+    </motion.div>
+  );
+}
 
 // ── Main exported component ───────────────────────────────────────────────
 export function Scrollytelling() {
@@ -247,17 +296,15 @@ export function Scrollytelling() {
     offset: ["start start", "end end"],
   });
 
-  // Derive bottle water level (continuous, 0-1)
-  const waterLevelMV = useTransform(scrollYProgress, [0, 1], [0.18, 0.96]);
-  const [waterLevel, setWaterLevel] = useState(0.18);
-  useMotionValueEvent(waterLevelMV, "change", setWaterLevel);
-
-  // Derive active scene index for ambient glow color
-  const [accentColor, setAccentColor] = useState(ACCENT_STOPS[0]);
+  // Active scene index → accent color for ambient glow
+  const [accentColor, setAccentColor] = useState(scenes[0].accent);
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const idx = Math.min(N - 1, Math.floor(v * N));
-    setAccentColor(ACCENT_STOPS[idx]);
+    setAccentColor(scenes[idx].accent);
   });
+
+  // Scroll hint fades out after first 5% of scroll
+  const hintOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
     <div
@@ -265,26 +312,28 @@ export function Scrollytelling() {
       id="source"
       style={{ height: `${(N + 1) * 100}vh`, position: "relative" }}
     >
-      {/* ── Sticky viewport ──────────────────────────────────────────── */}
+      {/* ── Sticky viewport ──────────────────────────────────────────────── */}
       <div
         className="sticky top-0 h-screen w-full overflow-hidden"
-        style={{ background: "#030d1a" }}
+        style={{ background: "#020b18" }}
       >
-        {/* Ambient glow that shifts with scene */}
+        {/* Ambient radial glow — shifts with scene accent */}
         <motion.div
-          animate={{ background: `radial-gradient(ellipse 60% 60% at 65% 50%, ${accentColor}22 0%, transparent 70%)` }}
-          transition={{ duration: 1.4, ease: "easeInOut" }}
+          animate={{
+            background: `radial-gradient(ellipse 55% 55% at 68% 50%, ${accentColor}20 0%, transparent 70%)`,
+          }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0 pointer-events-none"
         />
-        {/* Subtle top-left secondary glow */}
+        {/* Top-left secondary glow */}
         <div
-          className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full opacity-20 pointer-events-none blur-[120px]"
-          style={{ background: accentColor }}
+          className="absolute -top-40 -left-40 w-[550px] h-[550px] rounded-full opacity-[0.12] pointer-events-none blur-[130px]"
+          style={{ background: accentColor, transition: "background 1.2s ease" }}
         />
 
-        {/* ── Layout: text left | bottle right ─────────────────────── */}
+        {/* ── Main layout: text left | bottle right ─────────────────────── */}
         <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2">
-          {/* Left — text cross-fades */}
+          {/* Left — crossfading text panels */}
           <div className="relative h-full overflow-hidden">
             {scenes.map((scene, idx) => (
               <SceneText
@@ -296,29 +345,23 @@ export function Scrollytelling() {
             ))}
           </div>
 
-          {/* Right — 3D bottle, always present */}
-          <div className="h-full flex items-center justify-center">
-            <WaterBottle3D
-              waterLevel={waterLevel}
-              autoRotate
-              className="w-full h-full"
-            />
+          {/* Right — bottle with scroll parallax */}
+          <div className="relative h-full">
+            <BottleImage scrollYProgress={scrollYProgress} />
           </div>
         </div>
 
-        {/* ── Progress indicator ───────────────────────────────────── */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
+        {/* ── Progress bar (bottom) ─────────────────────────────────────── */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
           {scenes.map((_, idx) => (
             <ProgressDot key={idx} idx={idx} scrollYProgress={scrollYProgress} />
           ))}
         </div>
 
-        {/* ── Scroll hint (fades away after first scene) ───────────── */}
+        {/* ── Scroll hint ───────────────────────────────────────────────── */}
         <motion.div
-          style={{
-            opacity: useTransform(scrollYProgress, [0, 0.05], [1, 0]),
-          }}
-          className="absolute bottom-10 right-[calc(50%_-_24px)] flex flex-col items-center gap-2 pointer-events-none"
+          style={{ opacity: hintOpacity }}
+          className="absolute bottom-10 right-[calc(50%_-_20px)] flex flex-col items-center gap-2 pointer-events-none z-10"
         >
           <span className="text-[10px] tracking-[0.4em] uppercase text-white/30">Scroll</span>
           <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent" />
