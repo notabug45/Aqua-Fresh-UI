@@ -16,7 +16,7 @@ export default function Home() {
   const handleComplete = useCallback(() => setLoading(false), []);
 
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden selection:bg-primary/30 selection:text-primary">
+    <div className="relative min-h-screen bg-background selection:bg-primary/30 selection:text-primary">
       {loading && <Preloader onComplete={handleComplete} />}
       <Cursor />
       
